@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap');
+
+body {
+    font-family: 'Nanum Gothic Coding', monospace;
+    background: rgb(222, 216, 192);
+    margin: 30px;
+}
+
+.status__clock {
+    font-size: 30px;
+    font-weight: 700;
+    color: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.me__column {
+    margin-top: 30px;
+    display: flex;
+    justify-content: baseline;
+}
+
+.me__column-info {
+    font-size: 60px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.me-info-nick {
+    width: 270px;
+    padding-top: 5px;
+    font-weight: 100;
+}
+
+.me-info-birth {
+    width: 60px;
+    display: table-cell;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 100;
+/*     vertical-align: middle; */
+}
+
+.year {
+    color: #d23636;
+}
+
+.kakao {   
+  display: flex;
+  font-size:15px;
+  background-color: aquamarine;
+  width: 15px;
+  height: 70px;
+  padding: 10px 10px 0;
+  position: relative;
+}
+
+.kakao h1 {    
+  width: 210px;
+  margin: 10;
+  position: absolute;
+  bottom: 0;
+}
