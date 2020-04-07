@@ -42,7 +42,9 @@ class App extends Component {
     ))
     return movies;
   }
-
+                              /**************************************/
+                              //51 line 삼항연산자 ? = if / : = else //
+                              /**************************************/
   render() {
     return (
         <div className="App">
