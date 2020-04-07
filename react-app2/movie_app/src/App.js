@@ -35,7 +35,7 @@ class App extends Component {
       })
     }, 3000)
   }
-
+//리액트 내장객체와 구분하기 위해 "_" 붙이기
   _renderMovies = () => {
     const movies = this.state.movies.map((movie, index) => ( 
       <Movie title={movie.title} poster={movie.poster} key={index} />
