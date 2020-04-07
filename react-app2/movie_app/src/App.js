@@ -6,7 +6,7 @@ import Movie from './Movie';
 class App extends Component {
   state = {
   }
-  
+  //3초 후 로드
   componentDidMount() {
     setTimeout(() => {
       this.setState( {
