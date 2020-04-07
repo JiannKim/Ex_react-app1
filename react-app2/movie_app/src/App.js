@@ -8,9 +8,11 @@ class App extends Component {
 
   //3초 후 로드
   componentDidMount() {
-    fetch('https://yts.mx/api/v2/list_movies.json?sort_dy=rating');
+    fetch('https://yts.mx/api/v2/list_movies.json?sort_dy=rating')
+    .then(response => console.log(response))
+    .catch(err => console.log(err))
   }
-  
+
 //리액트 내장객체와 구분하기 위해 "_" 붙이기
   _renderMovies = () => {
     const movies = this.state.movies.map((movie, index) => ( 
