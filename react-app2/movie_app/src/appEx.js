@@ -3,7 +3,7 @@ import './App.css';
 import Movie from './Movie';
 
 
-class App extends Component {
+class AppEx extends Component {
   state = {
   }
   //3초 후 로드
@@ -47,11 +47,11 @@ class App extends Component {
                               /**************************************/
   render() {
     return (
-        <div className="App">
+        <div className="AppEx" >
           {this.state.movies ? this._renderMovies() : 'Loading...'}
         </div>
     );
   }
 }
 
-export default App;
+export default AppEx;
