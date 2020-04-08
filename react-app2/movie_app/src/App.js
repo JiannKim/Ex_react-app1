@@ -9,7 +9,8 @@ class App extends Component {
   //3초 후 로드
   componentDidMount() {
     fetch('https://yts.mx/api/v2/list_movies.json?sort_dy=rating')
-    .then(response => console.log(response))
+    .then(response => response.json())
+    .then(json => console.log(json))
     .catch(err => console.log(err))
   }
 
