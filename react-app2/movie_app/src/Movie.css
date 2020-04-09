@@ -1,0 +1,120 @@
+.Movie {
+    border-radius: 5px;
+    background-color: #fff;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    text-overflow: ellipsis;
+    padding: 0 20px;
+    /* box-shadow: 2px 3px 15px .5px rgba(128, 128, 128, 0.5); */
+    box-shadow: 0 8px 38px rgba(133, 133, 133, .3),
+    0 5px 12px rgba(133, 133, 133, .2);
+}
+
+.Movie__Column {
+    box-sizing: border-box;
+    width: 30%;
+    text-overflow: ellipsis;
+} 
+
+.Movie__Column:last-child {
+    padding: 20px, 0;
+    width: 60%;
+}
+
+.Movie .Movie__Genres {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.Movie__Genres .Movie__Genre {
+    margin-right: 10px;
+    color: #b4b5bd;
+}
+
+.Mobie .Movie__Synopsis {
+    text-overflow: ellipsis;
+    color: #b4b5bd;
+    overflow: hidden;
+}
+
+.Movie .Movie__Poster {
+    border-radius: 5px;
+    max-width: 100%;
+    position: relative;
+    top: -20px;
+    box-shadow: -10px 19px 30px rgba(83, 83, 83, .3), 
+    10px 15px 12px rgba(80, 80, 80, .2);
+}
+
+@media screen and (min-width:320px) and (max-width: 667px) {
+    .Movie {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 667px) and (arientation: portrait) {
+    .Movie {
+        width: 100%;
+        flex-direction: column;
+    }
+    .Movie__Poster {
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    .Movie__Column {
+        width: 100% !important;
+    }
+}
+
+
+/* 
+.Movie {
+    background-color: #fff;
+    width: 40%;
+    margin-bottom: 50px;
+    padding: 0 20px;
+    text-overflow: ellipsis;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.Movie .Movie__Poster {
+    margin-right: 30px;
+    box-shadow: 2px 3px 15px .5px rgba(128, 128, 128, 0.5);
+    position: relative;
+    top: -30px;
+}
+
+.Movie__Columns {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 20px;
+    position: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 304px;
+    box-shadow: 2px 3px 15px .1px rgba(128, 128, 128, 0.5);
+}
+
+.Movie__Genres {
+    font-weight: 600;
+    color: rgba(51, 51, 51, 0.8);
+}
+
+.Movie__Synopsis {
+    color: rgba(51, 51, 51, 0.5);
+}
+
+img {
+    border-radius: 5px;
+}
+ */
