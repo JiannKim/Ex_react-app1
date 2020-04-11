@@ -19,7 +19,7 @@ function Movie({title, poster, genres, synopsis}) {
                     {/* <p>{synopsis}</p> */}
                     <LinesEllipsis
                         text={synopsis}
-                        maxLine='5'
+                        maxLine='3'
                         ellipsis='... more'
                         trimright
                         basedOn='letters'
