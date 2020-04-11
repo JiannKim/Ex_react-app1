@@ -30,6 +30,7 @@ function Movie({title, poster, genres, synopsis}) {
     )
 }
 // 1/1 commit (4/11)
+// 1/2 commit (4/11)
 function MoviePoster({poster, alt}) {
     return (
         <img src={poster} alt={alt} title={alt} className="Movie__Poster" />
