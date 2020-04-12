@@ -29,10 +29,7 @@ function Movie({title, poster, genres, synopsis}) {
         </div>
     )
 }
-// 1/1 commit (4/11)
-// 1/2 commit (4/11)
-// 1/3 commit (4/11)
-// 1/4 commit (4/11)
+// 1day 1commit rebase test (4/12)
 
 function MoviePoster({poster, alt}) {
     return (
