@@ -12,13 +12,13 @@ function App() {
     email: '',
   });
   const { username, email } = inputs;
-  const onChange = e => {
+  const onChange = useCallback(e => {
     const { name, value } = e.target;
     setInputs({
       ...inputs,
       [name]: value
     })
-  };
+  }, []);
   const [users, setUsers] = useState([
       {
           id: 1,
@@ -50,13 +50,13 @@ function App() {
       email,
     };
     //setUser([...users, user]);
-    setUsers(users.concat(user));
+    setUsers(users => users.concat(user));
     setInputs({
       username: '',
       email: ''
     });
     nextId.current += 1;
-  }, [users, username, email]);
+  }, [username, email]);
 
   const onRemove = useCallback(id => {
     // user.id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
