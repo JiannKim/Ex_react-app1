@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 
-function User({ user, onRemove, onToggle }) {
+const User = React.memo(function User({ user, onRemove, onToggle }) {
     const { username, email, id, active } = user;
+
     useEffect(() => {
         console.log('컴포넌트가 화면에 나타남');
         /** 마운트 될때 **
@@ -36,7 +37,7 @@ function User({ user, onRemove, onToggle }) {
             */}
         </div>
     );
-};
+});
 // 1/1 comment (04/19)
 function UserList({ users, onRemove, onToggle }) {
     return (
@@ -55,4 +56,7 @@ function UserList({ users, onRemove, onToggle }) {
     );
 }
 
-export default React.memo(UserList);
+export default React.memo(
+    UserList,
+    (prevProps, nextProps) => nextProps.users === prevProps.users
+);
