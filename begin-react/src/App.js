@@ -1,6 +1,7 @@
 import React, { useRef, useReducer, useCallback, useMemo } from 'react';
 import UserList from './UserList';
 import CreateUser from './CreateUser';
+import useInputs from './useInputs';
 
 // 활성화된 유저의 수를 세어주는 함수(users를 파라미터로 가저온다)
 function countActiveUsers(users) {
@@ -10,10 +11,12 @@ function countActiveUsers(users) {
 }
 
 const initialState = {
+  /** Hook함수를 직접 만들어 사용할 경우 필요 없어진다.
   inputs: {
     username: '',
     email: ''
   },
+   */
   users: [
     {
         id: 1,
@@ -38,6 +41,7 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
+      /** Hook함수를 직접 만들어 사용할 경우 필요 없어진다
     case 'CHANGE_INPUT':
       return {
         ...state,
@@ -46,6 +50,7 @@ function reducer(state, action) {
           [action.name]: action.value
         }
       };
+      */
     case 'CREATE_USER':
       return {
         inputs: initialState.inputs,
@@ -72,10 +77,17 @@ function reducer(state, action) {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [form, onChange, reset] = useInputs({
+    username:'',
+    email:''
+  });
+  const { username, email } = form;
   const nextId = useRef(4);
   const { users } = state;
-  const { username, email } = state.inputs;
+  // const { username, email } = state.inputs;
 
+
+  /** Hook함수를 직접 만들어 사용할 경우 필요 없어진다.
   const onChange = useCallback(e => {
     const { name, value } = e.target;
     dispatch({
@@ -84,6 +96,7 @@ function App() {
       value
     })
   }, []);
+ */
 
 const onCreate = useCallback(() => {
   dispatch({
@@ -95,7 +108,8 @@ const onCreate = useCallback(() => {
     }
   });
   nextId.current += 1;
-}, [username, email]);
+  reset();
+}, [username, email, reset]);
 
 const onToggle = useCallback(id => {
   dispatch({
@@ -123,7 +137,7 @@ const count = useMemo(() => countActiveUsers(users), [users]);
       />
       <UserList users={users}
         onToggle={onToggle}
-        onRemove={onRemove} 
+        onRemove={onRemove}
       />
       <div>활성사용자 수 : {count}</div>
     </>
