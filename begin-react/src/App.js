@@ -1,7 +1,7 @@
-import React, { useRef, useReducer, useCallback, useMemo } from 'react';
+import React, { useRef, useReducer, useCallback, useMemo, createContext } from 'react';
 import UserList from './UserList';
 import CreateUser from './CreateUser';
-import useInputs from './useInputs';
+// import useInputs from './useInputs';
 
 // 활성화된 유저의 수를 세어주는 함수(users를 파라미터로 가저온다)
 function countActiveUsers(users) {
@@ -75,14 +75,17 @@ function reducer(state, action) {
   }
 }
 
+export const UserDispatch = createContext(null);
+
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [form, onChange, reset] = useInputs({
-    username:'',
-    email:''
-  });
-  const { username, email } = form;
-  const nextId = useRef(4);
+// User component에서 바로 사용한다면 필요없음
+  // const [form, onChange, reset] = useInputs({
+  //   username:'',
+  //   email:''
+  // });
+  // const { username, email } = form;
+  // const nextId = useRef(4);
   const { users } = state;
   // const { username, email } = state.inputs;
 
@@ -98,6 +101,7 @@ function App() {
   }, []);
  */
 
+/** User component에서 바로 사용한다면 필요없음
 const onCreate = useCallback(() => {
   dispatch({
     type: 'CREATE_USER',
@@ -110,7 +114,8 @@ const onCreate = useCallback(() => {
   nextId.current += 1;
   reset();
 }, [username, email, reset]);
-
+*/
+/** User component에서 바로 사용한다면 필요없음
 const onToggle = useCallback(id => {
   dispatch({
     type: 'TOGGLE_USER',
@@ -124,23 +129,16 @@ const onRemove = useCallback(id => {
     id
   })
 }, [])
-  
+*/  
+
 const count = useMemo(() => countActiveUsers(users), [users]);
 
   return (
-    <>
-      <CreateUser
-        username={username}
-        email={email}
-        onChange={onChange}
-        onCreate={onCreate}
-      />
-      <UserList users={users}
-        onToggle={onToggle}
-        onRemove={onRemove}
-      />
+    <UserDispatch.Provider value={dispatch}>
+      <CreateUser />
+      <UserList users={users} />
       <div>활성사용자 수 : {count}</div>
-    </>
+    </UserDispatch.Provider>
   );
 }
 
