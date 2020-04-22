@@ -4,6 +4,7 @@ import useInputs from './useInputs';
 
 const CreateUser = () => {
     const dispatch = useContext(UserDispatch);
+    //useInputs Custom Hook 사용
     const [{ username, email }, onChange, reset] = useInputs({
         username:'',
         email:''
