@@ -41,18 +41,8 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-      /** Hook함수를 직접 만들어 사용할 경우 필요 없어진다
-    case 'CHANGE_INPUT':
-      return {
-        ...state,
-        inputs: { //불변성을 지켜주기 위해 사용
-          ...state.inputs,
-          [action.name]: action.value
-        }
-      };
-      */
     case 'CREATE_USER':
-    // Immer로 구현 
+    // Immer로 구현 (immer 불변성을 지켜주는 간편하게 해주는 library. 필수항목은 아님)
       return produce(state, draft => {
         draft.users.push(action.user);
       });
@@ -76,7 +66,7 @@ function reducer(state, action) {
     // Immer로 구현
     return produce(state, draft => {
       const index = draft.users.findIndex(user => user.id === action.id);
-      draft.users.dplice(index, 1);
+      draft.users.splice(index, 1);
     });
       // return {
       //   users: state.users.filter(user => user.id !== action.id)
