@@ -4,11 +4,12 @@ import './index.css';
 import App from './App';
 // import Counter from './Counter';
 import * as serviceWorker from './serviceWorker';
+import Hello from './Hello';
 // import ContextSample from './ContextSample';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Hello />
   </React.StrictMode>,
   document.getElementById('root')
 );
