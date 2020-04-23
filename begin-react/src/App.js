@@ -11,12 +11,6 @@ function countActiveUsers(users) {
 }
 
 const initialState = {
-  /** Hook함수를 직접 만들어 사용할 경우 필요 없어진다.
-  inputs: {
-    username: '',
-    email: ''
-  },
-   */
   users: [
     {
         id: 1,
@@ -81,57 +75,7 @@ export const UserDispatch = createContext(null);
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-// User component에서 바로 사용한다면 필요없음
-  // const [form, onChange, reset] = useInputs({
-  //   username:'',
-  //   email:''
-  // });
-  // const { username, email } = form;
-  // const nextId = useRef(4);
   const { users } = state;
-  // const { username, email } = state.inputs;
-
-
-  /** Hook함수를 직접 만들어 사용할 경우 필요 없어진다.
-  const onChange = useCallback(e => {
-    const { name, value } = e.target;
-    dispatch({
-      type: 'CHANGE_INPUT',
-      name,
-      value
-    })
-  }, []);
- */
-
-/** User component에서 바로 사용한다면 필요없음
-const onCreate = useCallback(() => {
-  dispatch({
-    type: 'CREATE_USER',
-    user: {
-      id: nextId.current,
-      username,
-      email
-    }
-  });
-  nextId.current += 1;
-  reset();
-}, [username, email, reset]);
-*/
-/** User component에서 바로 사용한다면 필요없음
-const onToggle = useCallback(id => {
-  dispatch({
-    type: 'TOGGLE_USER',
-    id
-  });
-}, []);
-
-const onRemove = useCallback(id => {
-  dispatch({
-    type: 'REMOVE_USER',
-    id
-  })
-}, [])
-*/  
 
 const count = useMemo(() => countActiveUsers(users), [users]);
 
