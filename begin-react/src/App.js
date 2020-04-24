@@ -16,19 +16,19 @@ const initialState = {
         id: 1,
         username: 'jiahnkim',
         email: 'kja@kakao.com',
-        active: true,
+        active: true
     },
     {
         id: 2,
         username: 'velopert',
         email: 'public.velopert@gmail.com',
-        active: false,
+        active: false
     },
     {
         id: 3,
         username: 'santJ',
         email: 'santJ@snow.com',
-        active: false,
+        active: false
     }
   ]
 };

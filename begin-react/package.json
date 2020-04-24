@@ -18,7 +18,16 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "ptrttier"
+    ],
+    "rules": {
+      "no-unsed-vars": 1,
+      "no-console": 0,
+      "react/jsx-filename-extension": 0
+    }
+    
   },
   "browserslist": {
     "production": [
