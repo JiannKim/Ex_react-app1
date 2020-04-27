@@ -2,15 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { GoBell, GoHeart, GoOrganization, GoPerson, GoSearch } from 'react-icons/go';
 import { FcLikePlaceholder, FcConferenceCall } from 'react-icons/fc';
+import { FaUserCircle } from 'react-icons/fa';
 import DongChatMenu from './DongChatMenu';
 
 const ChatTemplateBlock = styled.div`
   width: 100%;
   height: 60px;
 
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
+  background: #f1f2f6;
+  border-radius: 6px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.06);
 
   margin: 0 auto; //페이지 중앙 정렬
   position: relative;
@@ -44,18 +45,22 @@ const SearchWrapper = styled.div`
 
 const SearchIcon = styled.div`
   position: absolute;
-  /* left: 7px; */
-  margin: 1px;
   left: 7px;
+  margin: 1px;
   color: lightgray;
 `;
 
 const SearchInput = styled.input`
   width: 86%;
+
+  /* height: 24px;
+  border-radius: 11px;
+  border: 1px solid lightgray; */
+
   padding: 3px;
   font-size: 1rem;
   border: none;
-  outline: none;
+  outline: none; 
 `;
 
 const Badge = styled.div`
@@ -82,9 +87,9 @@ function DongChatHeader() {
 
         <SearchWrapper>
           <SearchIcon>
-            <GoSearch className="goSearch" color="lightgray" />
+            <GoSearch />
           </SearchIcon>
-          <SearchInput type="text" placeholder="검색할 내용을 입력해 주세요." />
+          <SearchInput type="text" placeholder="..." />
         </SearchWrapper>
         
         <Badge>
@@ -94,7 +99,8 @@ function DongChatHeader() {
           <GoBell />
           {/* <FcConferenceCall /> 사람들 컬러 */}
           <GoOrganization />
-          <GoPerson />
+          {/* <GoPerson /> */}
+          <FaUserCircle />
         </Badge>
       </ChatTemplateBlock>
     </> 
