@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import MaterialUi from './components/MaterialUi';
+// import MaterialUi from './components/MaterialUi';
 
 ReactDOM.render(
   <React.StrictMode>
-    <MaterialUi />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

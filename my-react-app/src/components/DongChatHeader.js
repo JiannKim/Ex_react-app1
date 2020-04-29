@@ -37,39 +37,43 @@ const SearchWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  border: 1px solid lightgray;
-  border-radius: 11px;
+  /* border: 1px solid lightgray;
+  border-radius: 11px; */
   margin: 10px;
   padding: 7px;
 `;
 
 const SearchIcon = styled.div`
   position: absolute;
-  left: 7px;
+  left: 12%;
   margin: 1px;
   color: lightgray;
 `;
 
 const SearchInput = styled.input`
-  width: 86%;
-
-  /* height: 24px;
+  width: 80%;
+  height: 29px;
   border-radius: 11px;
-  border: 1px solid lightgray; */
+  border: 1px solid #ecedf2;
 
-  padding: 3px;
+  padding-left: 24%;
   font-size: 1rem;
-  border: none;
-  outline: none; 
+  outline: none;
+  
+  &:focus {
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.07);
+  }
 `;
 
 const Badge = styled.div`
   width: 250px;
 
   font-size: 1.5rem;
-
+  margin-left: 40px;
 //  border: 1px solid;
 
+  position: relative;
+  right: 3px;
   display: flex;
   justify-content: space-around;
   align-items: center;

@@ -13,12 +13,11 @@ import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import { FcLikePlaceholder } from 'react-icons/fc';
-import { FaUserCircle } from 'react-icons/fa';
+// import MailIcon from '@material-ui/icons/Mail'; <--- fc로 replaced
+import { FcLikePlaceholder, FcCollaboration, FcLike } from 'react-icons/fc';
+import { FaUserCircle, FaWeixin, FaAddressBook, FaGhost } from 'react-icons/fa';
 import { GoBell, GoOrganization, GoThreeBars } from 'react-icons/go';
 import styled from 'styled-components';
 
@@ -33,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+  background: '#1abc9c',
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(4),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -84,15 +84,17 @@ const useStyles = makeStyles((theme) => ({
 //추가된 항목
 const Badge = styled.div`
   width: 250px;
-
   font-size: 1.5rem;
 
-  border: 1px solid;
+  /* border: 1px solid; */
+  position: fixed;
+  right: 0;
 
   display: flex;
   justify-content: space-around;
   align-items: center;
 `;
+
 
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
@@ -107,38 +109,47 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  const ListItemIcon = styled.div`
+    font-size: 1.5rem;
+  `;
+
   return (
     <div className={classes.root}>
       <CssBaseline />
+      {/* 로고 보이기 */}
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
-          >
-            <GoThreeBars />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            Persistent drawer
-          </Typography>
-          <Badge>
-            {/* Header Badge */}
-            <FcLikePlaceholder/>
-            {/* <FcLike /> 채워진 하트*/}
-            <GoBell />
-            <GoOrganization />
-            <FaUserCircle />
-          </Badge>
-        </Toolbar>
+        {/* 상단 헤더 영역 */}
+      <Toolbar>
+        {/* 햄버거 메뉴 버튼 */}
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          onClick={handleDrawerOpen}
+          edge="start"
+          className={clsx(classes.menuButton, open && classes.hide)}
+        >
+          <GoThreeBars />
+        </IconButton>
+        <Typography variant="h6" noWrap>
+          DongTalk<FcCollaboration />
+        </Typography>
+        {/* 헤더 배지 */}
+        <Badge>
+          {/* Header Badge */}
+          <FcLikePlaceholder/>
+          {/* <FcLike /> 채워진 하트*/}
+          <GoBell />
+          <GoOrganization />
+          <FaUserCircle />
+        </Badge>
+      </Toolbar>
       </AppBar>
+      {/* 사이드 메뉴 드로어 */}
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -153,14 +164,21 @@ export default function PersistentDrawerLeft() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-        <Divider /> 
+        <Divider />
         <List>
-          {['라이브톡', '좋아하는 톡방'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          {
+            ['동네 라이브톡', '좋아하는 톡방', '친구목록', '유령모드'].map((text, index) => 
+              (
+                <ListItem button key={text}>
+                  <ListItemIcon>{index === 0 ? <FaWeixin /> : null}</ListItemIcon>
+                  <ListItemIcon>{index === 1 ? <FcLike /> : null}</ListItemIcon>
+                  <ListItemIcon>{index === 2 ? <FaAddressBook /> : null}</ListItemIcon>
+                  <ListItemIcon>{index === 3 ? <FaGhost /> : null}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              )
+            )
+          }
         </List>
       </Drawer>
       <main
@@ -176,10 +194,6 @@ export default function PersistentDrawerLeft() {
           gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
           donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
           adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-          Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-          imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-          arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-          donec massa sapien faucibus et molestie ac.
         </Typography>
         <Typography paragraph>
           Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
